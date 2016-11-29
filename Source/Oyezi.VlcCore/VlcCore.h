@@ -18,7 +18,11 @@
 #include <vlc\vlc.h>
 
 #ifndef CoreAPI
-#define CoreAPI  extern "C"  __declspec(dllexport) 
+#define CoreAPI  
+#ifdef __cplusplus
+extern "C"  
+#endif
+__declspec(dllexport) 
 #endif
 
 /**
