@@ -15,77 +15,62 @@
 *****************************************************************************/
 
 #include<Windows.h>
+#ifndef VLC_H
+#define VLC_H
 #include <vlc\vlc.h>
-
-#ifndef CoreAPI
-#define CoreAPI extern "C"  __declspec(dllexport) 
 #endif
 
-/**
-*缓冲事件回调的函数指针类型
-*参数 newCahce 当前缓冲的进度
-*/
-typedef void(*BuffingCallback)(float newCache);
+#ifndef HEAD_H
+#define HEAD_H
+#include "export_head.h"
+#endif
 
+libvlc_instance_t *pVLCInstance;                                     // libvlc 实例指针
+libvlc_media_player_t *pVLCMediaPlayer;                  // mediaPlayer 实例指针
+libvlc_media_t *pVLCMedia;
 
-libvlc_instance_t *pVlcInstance = NULL;
-libvlc_media_player_t *pMediaPlayer = NULL;
-libvlc_media_t *pMedia = NULL;
-libvlc_event_manager_t *pVLCEventManager = NULL;
+	/**
+	* 创建一个LibVlc 实例
+	* 返回一个整数 0-创建成功 -1-失败
+	*/
+	CoreAPI int CreateVlcInstance();
 
-// 缓冲事件回调函数指针
-BuffingCallback pfunBuffingCallback;
-void *pDrawable = NULL;
+	/**
+	* 设置一个句柄用来用来承载一个视频输出
+	* /参数hwnd 这个参数是一个win32/win64 API 生成的句柄
+	*/
+	CoreAPI void SetDrawable(void *hwnd);
 
-/**
-* 创建一个LibVlc 实例
-* 返回一个整数 0-创建成功 -1-失败
-*/
-CoreAPI int CreateVlcInstance();
+	/**
+	* 创建本地视频输出
+	* /参数 path 视频本地路径
+	*/
+	CoreAPI void CreateLocalMedia(const char *path);
 
-/**
-* 设置一个句柄用来用来承载一个视频输出
-* /参数hwnd 这个参数是一个win32/win64 API 生成的句柄
-*/
-CoreAPI void SetDrawable(void *hwnd);
+	/**
+	* 创建网络视频输出
+	* /参数 url 视频资源链接
+	*/
+	CoreAPI void CreateRemoteMedia(const char *url);
 
-/**
-* 创建本地视频输出
-* /参数 path 视频本地路径
-*/
-CoreAPI void CreateLocalMedia(const char *path);
+	/**
+	* 设置一个句柄用来用来承载一个视频输出
+	* \参数hwnd 这个参数是一个win32/win64 API 生成的句柄
+	*/
+	CoreAPI void Play();
 
-/**
-* 创建网络视频输出
-* /参数 url 视频资源链接
-*/
-CoreAPI void CreateRemoteMedia(const char *url);
+	/**
+	* 暂停视频   使用方法：在通过调用该方法停止播放后，再点击一次即可从当前位置开始播放
+	*/
+	CoreAPI void Pause();
 
-/**
-* 设置一个句柄用来用来承载一个视频输出
-* \参数hwnd 这个参数是一个win32/win64 API 生成的句柄
-*/
-CoreAPI void Play();
+	/**
+	* 释放使用的资源
+	* \返回一个整数 0表示成功 -1 表示失败
+	*/
+	CoreAPI int Destory();
 
-/**
-* 暂停视频   使用方法：在通过调用该方法停止播放后，再点击一次即可从当前位置开始播放
-*/
-CoreAPI void Pause();
+	extern void OnVLCEventCallback(const struct libvlc_event_t *pEvent, void * value);
 
-/**
-* 释放使用的资源
-* \返回一个整数 0表示成功 -1 表示失败
-*/
-CoreAPI int Destory();
-
-/**
-* 设置视频缓冲的回调函数
-* \参数
-*/
-CoreAPI void AttachBufferingCallback(BuffingCallback pBuffingCallback);
-
-void OnBuffering(const struct libvlc_event_t *pEvent, void * value);
-
-
-
-
+	void attach_media_events();
+	void attach_media_player_events();
