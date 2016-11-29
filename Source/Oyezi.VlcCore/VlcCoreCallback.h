@@ -8,14 +8,16 @@
 #include <vlc\vlc.h>
 #endif
 
-
-libvlc_event_manager_t *pVLCMediaPlayerEventManager;          // MediaPlayer事件管理器指针
-libvlc_event_manager_t *pVLCMediaEventManager;                       // Media 事件管理器指针
+// MediaPlayer事件管理器指针
+libvlc_event_manager_t *pVLCMediaPlayerEventManager; 
+// Media 事件管理器指针
+libvlc_event_manager_t *pVLCMediaEventManager;                       
 
 void OnStateChanged(libvlc_state_t state);
 void OnVLCEventCallback(const struct libvlc_event_t *pEvent, void * value);
 
-
+void attach_media_events(libvlc_media_t *pMedia);
+void attach_media_player_events(libvlc_media_player_t *pMediaPlayer);
 
 /**
 *缓冲事件回调的函数指针类型

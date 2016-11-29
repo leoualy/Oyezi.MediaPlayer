@@ -17,21 +17,16 @@ CoreAPI void SetDrawable(void *hwnd)
 	pDrawable = hwnd;
 }
 
-
 CoreAPI void CreateLocalMedia(const char *path)
 {
-	if (pVLCMedia == NULL){
-		pVLCMedia = libvlc_media_new_path(pVLCInstance, path);
-		attach_media_events();
-	}
+	pVLCMedia = libvlc_media_new_path(pVLCInstance, path);
+	attach_media_events(pVLCMedia);
 }
 
 CoreAPI void CreateRemoteMedia(const char *url)
 {
-	if (pVLCMedia == NULL){
-		pVLCMedia = libvlc_media_new_location(pVLCInstance, url);
-		attach_media_events();
-	}
+	pVLCMedia = libvlc_media_new_location(pVLCInstance, url);
+	attach_media_events(pVLCMedia);
 }
 
 CoreAPI void Play()
@@ -39,10 +34,11 @@ CoreAPI void Play()
 	if (pVLCMediaPlayer == NULL)
 	{
 		pVLCMediaPlayer = libvlc_media_player_new_from_media(pVLCMedia);
-		attach_media_player_events();
+		attach_media_player_events(pVLCMediaPlayer);
 	}
+	// 重新分配一个新的libvlc_media_t 指针
+	libvlc_media_player_set_media(pVLCMediaPlayer, pVLCMedia);
 	libvlc_media_player_set_hwnd(pVLCMediaPlayer, pDrawable);
-	libvlc_media_player_set_position(pVLCMediaPlayer, 0.0);
 	libvlc_media_player_play(pVLCMediaPlayer);
 	
 	return;
@@ -61,17 +57,6 @@ CoreAPI int Destory()
 	return 0;
 }
 
-
-void attach_media_events()
-{
-	pVLCMediaEventManager = libvlc_media_event_manager(pVLCMedia);
-	libvlc_event_attach(pVLCMediaEventManager, libvlc_MediaStateChanged, OnVLCEventCallback, NULL);
-}
-void attach_media_player_events()
-{
-	pVLCMediaPlayerEventManager = libvlc_media_player_event_manager(pVLCMediaPlayer);
-	libvlc_event_attach(pVLCMediaPlayerEventManager, libvlc_MediaPlayerBuffering, OnVLCEventCallback, NULL);
-}
 
 
 

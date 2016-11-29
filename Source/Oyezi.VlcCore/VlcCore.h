@@ -10,11 +10,17 @@
 *                      除基本的播放暂停外，定义了缓冲事件的回调函数指针类型，.net 平台可以通过
 *                      定义等价的委托和事件来将.net 的处理函数来进行注册
 *                      目前程序结构比较简陋，但已满足需求。接下来将尽快丰富功能，调整结构，稳定性
+*      修正1：
+                     日期：2016/11/30
+					 内容：每次Play()函数会使视频从开始播放
+					              添加了视频结束事件，可以从外部注册视频结束的回调处理方法
 *
 *
 *****************************************************************************/
 
 #include<Windows.h>
+#include<regex>
+
 #ifndef VLC_H
 #define VLC_H
 #include <vlc\vlc.h>
@@ -28,6 +34,13 @@
 libvlc_instance_t *pVLCInstance;                                     // libvlc 实例指针
 libvlc_media_player_t *pVLCMediaPlayer;                  // mediaPlayer 实例指针
 libvlc_media_t *pVLCMedia;
+
+extern void OnVLCEventCallback(const struct libvlc_event_t *pEvent, void * value);
+
+// 为media添加事件
+extern void attach_media_events(libvlc_media_t *pMedia);
+// 为media_player添加事件
+extern void attach_media_player_events(libvlc_media_player_t *pMediaPlayer);
 
 	/**
 	* 创建一个LibVlc 实例
@@ -70,7 +83,5 @@ libvlc_media_t *pVLCMedia;
 	*/
 	CoreAPI int Destory();
 
-	extern void OnVLCEventCallback(const struct libvlc_event_t *pEvent, void * value);
 
-	void attach_media_events();
-	void attach_media_player_events();
+	
