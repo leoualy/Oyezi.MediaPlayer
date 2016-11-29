@@ -21,6 +21,7 @@ namespace Oyezi.VLCMediaPlayer
     public class VMediaPlayer
     {
         public event BufferingEventHandler OnBuffering;
+        public event EndedEventHandler OnEnded;
         public VMediaPlayer()
         {
             VLCInterop.CreateVlcInstance();
@@ -45,6 +46,7 @@ namespace Oyezi.VLCMediaPlayer
         {
             VLCInterop.AttachBufferingCallback(OnBuffering);
             VLCInterop.CreateRemoteMedia(url);
+            VLCInterop.AttachEndedCallback(OnEnded);
             VLCInterop.Play();
         }
 
@@ -56,6 +58,7 @@ namespace Oyezi.VLCMediaPlayer
         {
             VLCInterop.AttachBufferingCallback(OnBuffering);
             VLCInterop.CreateLocalMedia(path);
+            VLCInterop.AttachEndedCallback(OnEnded);
             VLCInterop.Play();
         }
 
@@ -67,6 +70,7 @@ namespace Oyezi.VLCMediaPlayer
         {
             VLCInterop.AttachBufferingCallback(OnBuffering);
             VLCInterop.CreateRemoteMedia(url);
+            VLCInterop.AttachEndedCallback(OnEnded);
             VLCInterop.Play();
         }
 

@@ -11,4 +11,5 @@ namespace Oyezi.VLCMediaPlayer
     /// </summary>
     /// <param name="newCache"></param>
     public delegate void BufferingEventHandler(float newCache);
+    public delegate void EndedEventHandler();
 }

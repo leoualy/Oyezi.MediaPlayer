@@ -67,5 +67,7 @@ namespace Oyezi.VLCMediaPlayer
         /// <param name="onBuffingCallback"></param>
         [DllImport("Oyezi.VlcCore.dll")]
         internal static extern void AttachBufferingCallback(BufferingEventHandler onBuffingCallback);
+        [DllImport("Oyezi.VlcCore.dll")]
+        internal static extern void AttachEndedCallback(EndedEventHandler onEndedCallback);
     }
 }
