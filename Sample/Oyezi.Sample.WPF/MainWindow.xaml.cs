@@ -23,24 +23,25 @@ namespace Oyezi.Sample.WPF
     public partial class MainWindow : Window
     {
         
-        
         public MainWindow()
         {
             InitializeComponent();
-            this.Closed += MainWindow_Closed;
-            
+            media.OnBuffered += media_OnBuffered;
         }
 
-        
-
-        void MainWindow_Closed(object sender, EventArgs e)
+        void media_OnBuffered(float newCache)
         {
-            
+            //throw new NotImplementedException();
+            this.Dispatcher.Invoke(() =>
+            {
+                this.Title = newCache.ToString();
+            });
         }
-        
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string path=@"F:\test.mp4";
+            string url = "http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi";
+            string path = @"J:\test.wmv";
             media.PlayLocal(path);
         }
 

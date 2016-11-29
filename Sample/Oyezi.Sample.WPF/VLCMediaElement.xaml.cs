@@ -25,6 +25,7 @@ namespace Oyezi.Sample.WPF
     {
         private System.Windows.Forms.Panel mPnlMedia;
         private VMediaPlayer mMediaPlayer;
+        public event BufferingEventHandler OnBuffered;
         public VLCMediaElement()
         {
             InitializeComponent();
@@ -32,7 +33,14 @@ namespace Oyezi.Sample.WPF
             mMediaPlayer = new VMediaPlayer();
             frmHost.Child = mPnlMedia;
             mMediaPlayer.OnBuffering += mMediaPlayer_OnBuffering;
+            mMediaPlayer.OnEnded += mMediaPlayer_OnEnded;
             mMediaPlayer.VLCAttachFormHandle = mPnlMedia.Handle;
+        }
+
+        void mMediaPlayer_OnEnded()
+        {
+            MessageBox.Show("结束");
+            // throw new NotImplementedException();
         }
 
         public void PlayLocal(string path)
@@ -51,6 +59,8 @@ namespace Oyezi.Sample.WPF
         void mMediaPlayer_OnBuffering(float newCache)
         {
             // throw new NotImplementedException();
+            OnBuffered(newCache);
+            
         }
     }
 }
