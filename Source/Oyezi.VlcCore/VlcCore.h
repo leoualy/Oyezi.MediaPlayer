@@ -1,19 +1,19 @@
 /*****************************************************************************
-*VlcCore.h : ¶¨Òå±ØÒªµÄº¯ÊýÖ¸ÕëÀàÐÍ £¬¹«¹²±äÁ¿£¬º¯ÊýÃû
+*VlcCore.h : å®šä¹‰å¿…è¦çš„å‡½æ•°æŒ‡é’ˆç±»åž‹ ï¼Œå…¬å…±å˜é‡ï¼Œå‡½æ•°å
 *****************************************************************************
-*     ´´½¨Õß:          liuyuan      QQ:991258519
-* githubµØÖ·:          leoualy/Oyezi.MediaPlayer
-*   ´´½¨ÈÕÆÚ:          2016/11/27
+*     åˆ›å»ºè€…:          liuyuan      QQ:991258519
+* githubåœ°å€:          leoualy/Oyezi.MediaPlayer
+*   åˆ›å»ºæ—¥æœŸ:          2016/11/27
 *
-*      ÃèÊö:           ¸ÃDLL·â×°ÁËVLCµÄµ×²ã¿â£¬C/C++¿ÉÒÔÖ±½Óµ÷ÓÃ£¬C#Í¨¹ý»¥²Ù×÷Ò²¿ÉÒÔÊ¹ÓÃ
-*                      Ä¿Ç°°æ±¾Ö»ÊÇÎªÁË¿ìËÙÊµÏÖÏîÄ¿ÐèÒªµÄ¹¦ÄÜ£ºÖ÷ÒªÓÃÀ´Í¨¹ýhttp¼ÓÔØÍøÂçÊÓÆµ
-*                      ³ý»ù±¾µÄ²¥·ÅÔÝÍ£Íâ£¬¶¨ÒåÁË»º³åÊÂ¼þµÄ»Øµ÷º¯ÊýÖ¸ÕëÀàÐÍ£¬.net Æ½Ì¨¿ÉÒÔÍ¨¹ý
-*                      ¶¨ÒåµÈ¼ÛµÄÎ¯ÍÐºÍÊÂ¼þÀ´½«.net µÄ´¦Àíº¯ÊýÀ´½øÐÐ×¢²á
-*                      Ä¿Ç°³ÌÐò½á¹¹±È½Ï¼òÂª£¬µ«ÒÑÂú×ãÐèÇó¡£½ÓÏÂÀ´½«¾¡¿ì·á¸»¹¦ÄÜ£¬µ÷Õû½á¹¹£¬ÎÈ¶¨ÐÔ
-*      ÐÞÕý1£º
-                     ÈÕÆÚ£º2016/11/30
-					 ÄÚÈÝ£ºÃ¿´ÎPlay()º¯Êý»áÊ¹ÊÓÆµ´Ó¿ªÊ¼²¥·Å
-					              Ìí¼ÓÁËÊÓÆµ½áÊøÊÂ¼þ£¬¿ÉÒÔ´ÓÍâ²¿×¢²áÊÓÆµ½áÊøµÄ»Øµ÷´¦Àí·½·¨
+*      æè¿°:           è¯¥DLLå°è£…äº†VLCçš„åº•å±‚åº“ï¼ŒC/C++å¯ä»¥ç›´æŽ¥è°ƒç”¨ï¼ŒC#é€šè¿‡äº’æ“ä½œä¹Ÿå¯ä»¥ä½¿ç”¨
+*                      ç›®å‰ç‰ˆæœ¬åªæ˜¯ä¸ºäº†å¿«é€Ÿå®žçŽ°é¡¹ç›®éœ€è¦çš„åŠŸèƒ½ï¼šä¸»è¦ç”¨æ¥é€šè¿‡httpåŠ è½½ç½‘ç»œè§†é¢‘
+*                      é™¤åŸºæœ¬çš„æ’­æ”¾æš‚åœå¤–ï¼Œå®šä¹‰äº†ç¼“å†²äº‹ä»¶çš„å›žè°ƒå‡½æ•°æŒ‡é’ˆç±»åž‹ï¼Œ.net å¹³å°å¯ä»¥é€šè¿‡
+*                      å®šä¹‰ç­‰ä»·çš„å§”æ‰˜å’Œäº‹ä»¶æ¥å°†.net çš„å¤„ç†å‡½æ•°æ¥è¿›è¡Œæ³¨å†Œ
+*                      ç›®å‰ç¨‹åºç»“æž„æ¯”è¾ƒç®€é™‹ï¼Œä½†å·²æ»¡è¶³éœ€æ±‚ã€‚æŽ¥ä¸‹æ¥å°†å°½å¿«ä¸°å¯ŒåŠŸèƒ½ï¼Œè°ƒæ•´ç»“æž„ï¼Œç¨³å®šæ€§
+*      ä¿®æ­£1ï¼š
+                     æ—¥æœŸï¼š2016/11/30
+		     å†…å®¹ï¼šæ¯æ¬¡Play()å‡½æ•°ä¼šä½¿è§†é¢‘ä»Žå¼€å§‹æ’­æ”¾
+		     æ·»åŠ äº†è§†é¢‘ç»“æŸäº‹ä»¶ï¼Œå¯ä»¥ä»Žå¤–éƒ¨æ³¨å†Œè§†é¢‘ç»“æŸçš„å›žè°ƒå¤„ç†æ–¹æ³•
 *
 *
 *****************************************************************************/
@@ -31,55 +31,55 @@
 #include "export_head.h"
 #endif
 
-libvlc_instance_t *pVLCInstance;                                     // libvlc ÊµÀýÖ¸Õë
-libvlc_media_player_t *pVLCMediaPlayer;                  // mediaPlayer ÊµÀýÖ¸Õë
+libvlc_instance_t *pVLCInstance;                                     // libvlc å®žä¾‹æŒ‡é’ˆ
+libvlc_media_player_t *pVLCMediaPlayer;                  // mediaPlayer å®žä¾‹æŒ‡é’ˆ
 libvlc_media_t *pVLCMedia;
 
 extern void OnVLCEventCallback(const struct libvlc_event_t *pEvent, void * value);
 
-// ÎªmediaÌí¼ÓÊÂ¼þ
+// ä¸ºmediaæ·»åŠ äº‹ä»¶
 extern void attach_media_events(libvlc_media_t *pMedia);
-// Îªmedia_playerÌí¼ÓÊÂ¼þ
+// ä¸ºmedia_playeræ·»åŠ äº‹ä»¶
 extern void attach_media_player_events(libvlc_media_player_t *pMediaPlayer);
 
 	/**
-	* ´´½¨Ò»¸öLibVlc ÊµÀý
-	* ·µ»ØÒ»¸öÕûÊý 0-´´½¨³É¹¦ -1-Ê§°Ü
+	* åˆ›å»ºä¸€ä¸ªLibVlc å®žä¾‹
+	* è¿”å›žä¸€ä¸ªæ•´æ•° 0-åˆ›å»ºæˆåŠŸ -1-å¤±è´¥
 	*/
 	CoreAPI int CreateVlcInstance();
 
 	/**
-	* ÉèÖÃÒ»¸ö¾ä±úÓÃÀ´ÓÃÀ´³ÐÔØÒ»¸öÊÓÆµÊä³ö
-	* /²ÎÊýhwnd Õâ¸ö²ÎÊýÊÇÒ»¸öwin32/win64 API Éú³ÉµÄ¾ä±ú
+	* è®¾ç½®ä¸€ä¸ªå¥æŸ„ç”¨æ¥ç”¨æ¥æ‰¿è½½ä¸€ä¸ªè§†é¢‘è¾“å‡º
+	* /å‚æ•°hwnd è¿™ä¸ªå‚æ•°æ˜¯ä¸€ä¸ªwin32/win64 API ç”Ÿæˆçš„å¥æŸ„
 	*/
 	CoreAPI void SetDrawable(void *hwnd);
 
 	/**
-	* ´´½¨±¾µØÊÓÆµÊä³ö
-	* /²ÎÊý path ÊÓÆµ±¾µØÂ·¾¶
+	* åˆ›å»ºæœ¬åœ°è§†é¢‘è¾“å‡º
+	* /å‚æ•° path è§†é¢‘æœ¬åœ°è·¯å¾„
 	*/
 	CoreAPI void CreateLocalMedia(const char *path);
 
 	/**
-	* ´´½¨ÍøÂçÊÓÆµÊä³ö
-	* /²ÎÊý url ÊÓÆµ×ÊÔ´Á´½Ó
+	* åˆ›å»ºç½‘ç»œè§†é¢‘è¾“å‡º
+	* /å‚æ•° url è§†é¢‘èµ„æºé“¾æŽ¥
 	*/
 	CoreAPI void CreateRemoteMedia(const char *url);
 
 	/**
-	* ÉèÖÃÒ»¸ö¾ä±úÓÃÀ´ÓÃÀ´³ÐÔØÒ»¸öÊÓÆµÊä³ö
-	* \²ÎÊýhwnd Õâ¸ö²ÎÊýÊÇÒ»¸öwin32/win64 API Éú³ÉµÄ¾ä±ú
+	* è®¾ç½®ä¸€ä¸ªå¥æŸ„ç”¨æ¥ç”¨æ¥æ‰¿è½½ä¸€ä¸ªè§†é¢‘è¾“å‡º
+	* \å‚æ•°hwnd è¿™ä¸ªå‚æ•°æ˜¯ä¸€ä¸ªwin32/win64 API ç”Ÿæˆçš„å¥æŸ„
 	*/
 	CoreAPI void Play();
 
 	/**
-	* ÔÝÍ£ÊÓÆµ   Ê¹ÓÃ·½·¨£ºÔÚÍ¨¹ýµ÷ÓÃ¸Ã·½·¨Í£Ö¹²¥·Åºó£¬ÔÙµã»÷Ò»´Î¼´¿É´Óµ±Ç°Î»ÖÃ¿ªÊ¼²¥·Å
+	* æš‚åœè§†é¢‘   ä½¿ç”¨æ–¹æ³•ï¼šåœ¨é€šè¿‡è°ƒç”¨è¯¥æ–¹æ³•åœæ­¢æ’­æ”¾åŽï¼Œå†ç‚¹å‡»ä¸€æ¬¡å³å¯ä»Žå½“å‰ä½ç½®å¼€å§‹æ’­æ”¾
 	*/
 	CoreAPI void Pause();
 
 	/**
-	* ÊÍ·ÅÊ¹ÓÃµÄ×ÊÔ´
-	* \·µ»ØÒ»¸öÕûÊý 0±íÊ¾³É¹¦ -1 ±íÊ¾Ê§°Ü
+	* é‡Šæ”¾ä½¿ç”¨çš„èµ„æº
+	* \è¿”å›žä¸€ä¸ªæ•´æ•° 0è¡¨ç¤ºæˆåŠŸ -1 è¡¨ç¤ºå¤±è´¥
 	*/
 	CoreAPI int Destory();
 
