@@ -19,10 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="VlcCore.h" />
+    <ClInclude Include="vlc_core.h" />
+    <ClInclude Include="vlc_callback.h" />
+    <ClInclude Include="vlc_event.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="VlcCore.cpp" />
+    <ClCompile Include="vlc_core.cpp" />
+    <ClCompile Include="vlc_callback.cpp" />
+    <ClCompile Include="vlc_event.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C53F6935-D8B3-4F47-8119-0CF016BC2418}</ProjectGuid>
@@ -75,6 +79,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\Build\VlcCore\DebugV0.0.1\</OutDir>
+    <IncludePath>J:\Oyezi.MediaPlayer\Vlclib\X64\sdk\include;$(IncludePath)</IncludePath>
+    <LibraryPath>J:\Oyezi.MediaPlayer\Vlclib\X64\sdk\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
